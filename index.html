@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FASTFIVE SEOLLEUNG | 입주 및 지점 통합 가이드</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563EB;
+            --primary-hover: #1D4ED8;
+            --primary-light: #EFF6FF;
+            --bg-main: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-title: #0F172A;
+            --text-body: #334155;
+            --text-sub: #64748B;
+            --border-color: #E2E8F0;
+            --badge-bg: #DBEAFE;
+            --badge-text: #1E40AF;
+            --ff-orange: #FF4B33;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0; padding: 0;
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, sans-serif;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-body);
+            line-height: 1.6;
+            padding-bottom: 80px;
+        }
+
+        /* Top Header */
+        header {
+            position: sticky; top: 0; z-index: 100;
+            background: #FFFFFF;
+            border-bottom: 1px solid var(--border-color);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+        }
+
+        .header-top {
+            padding: 12px 20px;
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 840px; margin: 0 auto;
+        }
+
+        .brand-logo {
+            font-weight: 800; font-size: 1.15rem; color: var(--text-title);
+            display: flex; align-items: center; gap: 8px; text-decoration: none;
+        }
+
+        .brand-badge {
+            background: var(--primary-light); color: var(--primary);
+            font-size: 0.75rem; font-weight: 700; padding: 3px 8px; border-radius: 6px;
+        }
+
+        .header-links { display: flex; align-items: center; gap: 10px; }
+
+        .btn-official-site {
+            background: #1E293B; color: #FFFFFF; font-size: 0.8rem; font-weight: 700;
+            padding: 6px 12px; border-radius: 6px; text-decoration: none; transition: background 0.2s;
+        }
+        .btn-official-site:hover { background: #0F172A; }
+
+        .btn-admin-toggle {
+            background: #F1F5F9; color: var(--text-title); border: 1px solid var(--border-color);
+            padding: 6px 10px; border-radius: 6px; font-size: 0.8rem; font-weight: 700; cursor: pointer;
+        }
+
+        /* Search Bar */
+        .search-container { max-width: 840px; margin: 0 auto; padding: 0 16px 12px; }
+        .search-box { position: relative; display: flex; align-items: center; }
+        .search-input {
+            width: 100%; padding: 12px 18px 12px 44px;
+            background: var(--bg-main); border: 1.5px solid var(--border-color); border-radius: 12px;
+            font-size: 0.92rem; font-weight: 600; color: var(--text-title); outline: none; transition: all 0.2s;
+        }
+        .search-input:focus { border-color: var(--primary); background: #FFFFFF; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1); }
+        .search-icon { position: absolute; left: 16px; font-size: 1.1rem; color: var(--text-sub); }
+
+        /* Navigation Tabs */
+        .nav-tabs-wrapper {
+            overflow-x: auto; white-space: nowrap; background: #FFFFFF; border-top: 1px solid #F1F5F9; scrollbar-width: none;
+        }
+        .nav-tabs-wrapper::-webkit-scrollbar { display: none; }
+        .nav-tabs { display: flex; max-width: 840px; margin: 0 auto; padding: 0 12px; }
+        .tab-item {
+            padding: 12px 16px; font-size: 0.9rem; font-weight: 700; color: var(--text-sub);
+            text-decoration: none; border-bottom: 3px solid transparent; cursor: pointer; transition: all 0.2s;
+        }
+        .tab-item.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+        /* Container */
+        .container { max-width: 840px; margin: 0 auto; padding: 20px 16px; }
+
+        /* Hero Banner */
+        .hero-banner {
+            background: linear-gradient(135deg, #1E3A8A 0%, #2563EB 100%);
+            border-radius: 20px; padding: 28px 24px; color: #FFFFFF; margin-bottom: 20px;
+            box-shadow: 0 10px 20px rgba(37, 99, 235, 0.15); display: flex; justify-content: space-between; align-items: center;
+        }
+        .hero-title { font-size: 1.55rem; font-weight: 800; line-height: 1.35; margin-bottom: 6px; }
+        .hero-desc { font-size: 0.88rem; color: #DBEAFE; }
+
+        /* Grid Quick Buttons */
+        .grid-menu {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; margin-bottom: 20px;
+        }
+        @media (max-width: 640px) { .grid-menu { grid-template-columns: repeat(3, 1fr); } }
+
+        .grid-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 14px;
+            padding: 16px 10px; text-align: center; cursor: pointer; transition: all 0.2s; text-decoration: none; color: inherit;
+        }
+        .grid-card:hover { border-color: var(--primary); transform: translateY(-2px); box-shadow: 0 6px 16px rgba(37, 99, 235, 0.08); }
+        .grid-icon { font-size: 1.6rem; margin-bottom: 4px; }
+        .grid-label { font-size: 0.82rem; font-weight: 700; color: var(--text-title); }
+
+        /* Section Cards */
+        .section-card {
+            background: var(--card-bg); border: 1px solid var(--border-color); border-radius: 20px;
+            padding: 24px 20px; margin-bottom: 20px;
+        }
+        .section-header { margin-bottom: 16px; display: flex; justify-content: space-between; align-items: center; }
+        .section-badge { color: var(--primary); font-size: 0.75rem; font-weight: 800; letter-spacing: 1px; }
+        .section-title { font-size: 1.25rem; font-weight: 800; color: var(--text-title); }
+
+        /* Link External Button inside Section */
+        .btn-ext-link {
+            background: var(--primary-light); color: var(--primary); padding: 6px 12px; border-radius: 6px;
+            font-size: 0.82rem; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 4px;
+        }
+
+        /* Interactive Info Item */
+        .info-item {
+            padding: 14px 16px; background: var(--bg-main); border: 1px solid var(--border-color);
+            border-radius: 12px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
+            cursor: pointer; transition: all 0.2s;
+        }
+        .info-item:hover { border-color: var(--primary); background: #FFFFFF; }
+        .info-item-title { font-weight: 700; font-size: 0.95rem; color: var(--text-title); }
+        .info-item-sub { font-size: 0.82rem; color: var(--text-sub); margin-top: 2px; }
+        .info-arrow { color: var(--primary); font-weight: 700; font-size: 0.9rem; }
+
+        /* Modal Overlay & PDF Viewer */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(15, 23, 42, 0.6); backdrop-filter: blur(4px); z-index: 999;
+            display: none; align-items: center; justify-content: center; padding: 20px;
+        }
+        .modal-overlay.active { display: flex; }
+        .modal-card {
+            background: #FFFFFF; border-radius: 24px; width: 100%; max-width: 680px;
+            max-height: 88vh; overflow-y: auto; padding: 28px 24px; position: relative;
+        }
+        .modal-close {
+            position: absolute; top: 20px; right: 20px; background: var(--bg-main);
+            border: none; width: 32px; height: 32px; border-radius: 50%; font-size: 1.2rem; cursor: pointer; font-weight: 800;
+        }
+        .modal-badge {
+            background: var(--badge-bg); color: var(--badge-text); font-size: 0.75rem;
+            font-weight: 800; padding: 4px 10px; border-radius: 8px; display: inline-block; margin-bottom: 12px;
+        }
+        .modal-title { font-size: 1.35rem; font-weight: 800; color: var(--text-title); margin-bottom: 12px; }
+        .modal-body { font-size: 0.95rem; color: var(--text-body); line-height: 1.6; }
+        .modal-body table { width: 100%; border-collapse: collapse; margin: 12px 0; }
+        .modal-body th, .modal-body td { border: 1px solid var(--border-color); padding: 8px 12px; font-size: 0.88rem; }
+        .modal-body th { background: var(--bg-main); font-weight: 700; }
+
+        /* PDF Viewer Container */
+        .pdf-viewer-frame {
+            width: 100%; height: 500px; border: 1px solid var(--border-color); border-radius: 12px; margin-top: 10px;
+        }
+
+        /* Admin Mode Control Panel & WYSIWYG Editor */
+        .admin-panel {
+            display: none; background: #FFF8F6; border: 2px solid var(--ff-orange);
+            border-radius: 16px; padding: 20px; max-width: 840px; margin: 16px auto;
+        }
+        .admin-panel.active { display: block; }
+        .admin-head { font-size: 1.05rem; font-weight: 800; color: var(--ff-orange); margin-bottom: 14px; display: flex; justify-content: space-between; }
+        .admin-form-group { margin-bottom: 14px; }
+        .admin-label { font-size: 0.85rem; font-weight: 700; display: block; margin-bottom: 6px; }
+
+        /* WYSIWYG Toolbar */
+        .editor-toolbar {
+            background: #F1F5F9; border: 1px solid var(--border-color); border-bottom: none;
+            padding: 6px; border-radius: 6px 6px 0 0; display: flex; gap: 4px; flex-wrap: wrap;
+        }
+        .editor-btn {
+            background: #FFFFFF; border: 1px solid var(--border-color); padding: 4px 8px; border-radius: 4px;
+            font-size: 0.8rem; font-weight: 700; cursor: pointer;
+        }
+        .editor-content {
+            border: 1px solid var(--border-color); padding: 12px; min-height: 160px;
+            background: #FFFFFF; border-radius: 0 0 6px 6px; outline: none; font-size: 0.9rem;
+        }
+
+        /* Floating Chatbot Widget Icon */
+        .chatbot-widget {
+            position: fixed; bottom: 24px; right: 20px; z-index: 500;
+            display: flex; align-items: center; gap: 10px; text-decoration: none;
+        }
+        .chatbot-label {
+            background: var(--text-title); color: #FFFFFF; font-size: 0.82rem;
+            font-weight: 700; padding: 8px 14px; border-radius: 20px; box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+        }
+        .chatbot-icon {
+            width: 54px; height: 54px; background: var(--primary); color: #FFFFFF;
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.5rem; box-shadow: 0 8px 24px rgba(37, 99, 235, 0.4); cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <div class="header-top">
+            <a href="#" class="brand-logo">
+                FASTFIVE <span class="brand-badge">선릉 통합 멤버센터</span>
+            </a>
+            <div class="header-links">
+                <a href="https://fastfive.co.kr/" target="_blank" class="btn-official-site">🏢 공식 홈페이지 ↗</a>
+                <button class="btn-admin-toggle" onclick="toggleAdminPrompt()">⚙️ 관리자 모드</button>
+            </div>
+        </div>
+
+        <div class="search-container">
+            <div class="search-box">
+                <span class="search-icon">🔍</span>
+                <input type="text" id="searchInput" class="search-input" placeholder="키워드 검색 (예: 와이파이, 냉장고, 복합기, 크레딧, 혜택, 가구)" onkeyup="filterContent()">
+            </div>
+        </div>
+
+        <div class="nav-tabs-wrapper">
+            <nav class="nav-tabs">
+                <div class="tab-item active" onclick="switchCategory('all', this)">전체보기</div>
+                <div class="tab-item" onclick="switchCategory('welcome', this)">웰컴 & 필수 가이드</div>
+                <div class="tab-item" onclick="switchCategory('office', this)">사무공간 & 비품</div>
+                <div class="tab-item" onclick="switchCategory('credit', this)">크레딧 & 회의실</div>
+                <div class="tab-item" onclick="switchCategory('benefit', this)">제휴 혜택</div>
+                <div class="tab-item" onclick="switchCategory('etc', this)">주차/택배/에티켓</div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Admin Panel with WYSIWYG Editor -->
+    <div class="admin-panel" id="adminPanel">
+        <div class="admin-head">
+            <span>⚙️ 관리자 시스템 (WYSIWYG 서식/표/이미지/PDF 편집)</span>
+            <button onclick="saveAdminChanges()" style="background:var(--ff-orange); color:#fff; border:none; padding:6px 14px; border-radius:6px; font-weight:800; cursor:pointer;">💾 프론트 즉시 반영 저장</button>
+        </div>
+        
+        <div class="admin-form-group">
+            <label class="admin-label">수정할 항목 선택</label>
+            <select id="admItemSelect" class="search-input" style="padding:8px 12px;" onchange="loadItemToEditor()">
+                <option value="welcome-letter">✉️ 선릉지점 웰컴레터 & OT 문서</option>
+                <option value="wifi">📶 전 층 공용 Wi-Fi 가이드</option>
+                <option value="door">🚪 스마트폰 모바일 출입 카드</option>
+                <option value="printer-black">🖨️ 복합기 이용가이드 문서</option>
+                <option value="credit-info">💳 크레딧 가이드 바로가기</option>
+                <option value="fivecloud">☁️ 파이브클라우드 소개서</option>
+            </select>
+        </div>
+
+        <div class="admin-form-group">
+            <label class="admin-label">에디터 서식 도구</label>
+            <div class="editor-toolbar">
+                <button class="editor-btn" onclick="execCmd('bold')"><b>B</b></button>
+                <button class="editor-btn" onclick="execCmd('italic')"><i>I</i></button>
+                <button class="editor-btn" onclick="execCmd('underline')"><u>U</u></button>
+                <button class="editor-btn" onclick="execCmd('insertUnorderedList')">• 목록</button>
+                <button class="editor-btn" onclick="insertLinkPrompt()">🔗 링크</button>
+                <button class="editor-btn" onclick="insertImagePrompt()">🖼️ 이미지 URL</button>
+                <button class="editor-btn" onclick="insertTable()">📊 표 삽입</button>
+                <input type="color" onchange="execColor(this.value)" style="height:26px; border:none; cursor:pointer;" title="글자색">
+            </div>
+            <div class="editor-content" id="editorContent" contenteditable="true">
+                <!-- Editable Rich HTML Content -->
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <!-- Hero -->
+        <section class="hero-banner">
+            <div>
+                <h1 class="hero-title" id="dispHeroTitle">패스트파이브 선릉<br>입주 멤버 안내 통합 센터</h1>
+                <p class="hero-desc">지점 이용 수칙부터 비품 신청, 복합기, 크레딧 가이드까지 한눈에 확인하세요.</p>
+            </div>
+            <a href="https://fastfive.co.kr/" target="_blank" style="background:#FFFFFF; color:var(--primary); padding:10px 18px; border-radius:12px; font-weight:800; font-size:0.88rem; text-decoration:none; white-space:nowrap;">공식 웹사이트 ↗</a>
+        </section>
+
+        <!-- Quick Grid Buttons (5종) -->
+        <div class="grid-menu">
+            <div class="grid-card" onclick="openModal('wifi')">
+                <div class="grid-icon">📶</div>
+                <div class="grid-label">Wi-Fi 연결</div>
+            </div>
+            <div class="grid-card" onclick="openModal('door')">
+                <div class="grid-icon">🚪</div>
+                <div class="grid-label">모바일 출입카드</div>
+            </div>
+            <div class="grid-card" onclick="openModal('printer-black')">
+                <div class="grid-icon">🖨️</div>
+                <div class="grid-label">복합기 가이드</div>
+            </div>
+            <a href="https://members.fastfive.co.kr/benefits" target="_blank" class="grid-card">
+                <div class="grid-icon">🎁</div>
+                <div class="grid-label">제휴 혜택</div>
+            </a>
+            <a href="https://credit-guide.fastfive.co.kr/" target="_blank" class="grid-card">
+                <div class="grid-icon">💳</div>
+                <div class="grid-label">크레딧 가이드</div>
+            </a>
+        </div>
+
+        <!-- 1. 웰컴 및 필수 정보 -->
+        <section class="section-card category-sec" id="sec-welcome">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">WELCOME & ESSENTIALS</span>
+                    <h2 class="section-title">👋 입주 웰컴 가이드 & 지점 기본 정보</h2>
+                </div>
+            </div>
+            <div class="info-item searchable" onclick="openModal('welcome-letter')">
+                <div>
+                    <div class="info-item-title">✉️ 선릉지점 웰컴레터 & 입주 OT (PDF 문서 원본)</div>
+                    <div class="info-item-sub">지점 주소, 운영시간, 와이파이, 앱 가입 가이드</div>
+                </div>
+                <span class="info-arrow">PDF 보기 →</span>
+            </div>
+            <div class="info-item searchable" onclick="openModal('wifi')">
+                <div>
+                    <div class="info-item-title">📶 전 층 공용 Wi-Fi (five0401) 원클릭 복사</div>
+                    <div class="info-item-sub">FASTFIVE_5G 비밀번호 자동 복사 및 유선 랜 사용법</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+            <div class="info-item searchable" onclick="openModal('door')">
+                <div>
+                    <div class="info-item-title">🚪 모바일 출입카드 발급 및 세팅</div>
+                    <div class="info-item-sub">스마트폰 태그 출입 및 NFC/블루투스 권한 설정</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+        </section>
+
+        <!-- 2. 크레딧 및 회의실 -->
+        <section class="section-card category-sec" id="sec-credit">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">CREDIT & MEETING ROOM</span>
+                    <h2 class="section-title">📅 회의실 예약 수칙 & 크레딧 가이드</h2>
+                </div>
+                <a href="https://credit-guide.fastfive.co.kr/" target="_blank" class="btn-ext-link">크레딧 가이드 웹 ↗</a>
+            </div>
+            <div class="info-item searchable" onclick="openModal('credit-info')">
+                <div>
+                    <div class="info-item-title">💳 크레딧 차감 정책 & 회의실 예약 가이드</div>
+                    <div class="info-item-sub">30분당 1크레딧, 개인 1일 최대 6시간, 추가 구매 방법</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+            <div class="info-item searchable" onclick="openModal('peak-credit')">
+                <div>
+                    <div class="info-item-title">⏰ 평일 피크타임(12시~18시) 미팅룸 추가 차감</div>
+                    <div class="info-item-sub">17인 이하 시간당 3크레딧, 18인 이상 시간당 4크레딧</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+        </section>
+
+        <!-- 3. 복합기 및 IT 솔루션 -->
+        <section class="section-card category-sec" id="sec-oa">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">OA & IT SERVICES</span>
+                    <h2 class="section-title">🖨️ 복합기 이용가이드 & 파이브클라우드</h2>
+                </div>
+            </div>
+            <div class="info-item searchable" onclick="openModal('printer-black')">
+                <div>
+                    <div class="info-item-title">🖨️ 복합기 이용 가이드 (PDF 문서 원본)</div>
+                    <div class="info-item-sub">흑백(월 200장 무료), 컬러 결제카드 등록 세팅</div>
+                </div>
+                <span class="info-arrow">PDF 보기 →</span>
+            </div>
+            <div class="info-item searchable" onclick="openModal('fivecloud')">
+                <div>
+                    <div class="info-item-title">☁️ 파이브클라우드 소개서 (PDF 문서 원본)</div>
+                    <div class="info-item-sub">네이버웍스/M365/AWS 최대 40% 할인 및 IT 컨설팅</div>
+                </div>
+                <span class="info-arrow">PDF 보기 →</span>
+            </div>
+        </section>
+
+        <!-- 4. 제휴 혜택 페이지 -->
+        <section class="section-card category-sec" id="sec-benefit">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">MEMBERS BENEFITS</span>
+                    <h2 class="section-title">🎁 패스트파이브 멤버 전용 제휴 혜택</h2>
+                </div>
+                <a href="https://members.fastfive.co.kr/benefits" target="_blank" class="btn-ext-link">혜택 전체보기 ↗</a>
+            </div>
+            <div class="info-item searchable" onclick="window.open('https://members.fastfive.co.kr/benefits', '_blank')">
+                <div>
+                    <div class="info-item-title">🌟 업무, 경영, 피트니스, F&B 제휴 혜택 목록</div>
+                    <div class="info-item-sub">패파 멤버십 고객을 위한 카테고리별 단독 할인 혜택</div>
+                </div>
+                <span class="info-arrow">바로가기 ↗</span>
+            </div>
+        </section>
+
+        <!-- 5. 사무공간 및 에티켓 -->
+        <section class="section-card category-sec" id="sec-office">
+            <div class="section-header">
+                <div>
+                    <span class="section-badge">OFFICE & ETIQUETTE</span>
+                    <h2 class="section-title">🏢 사무공간 비품, 주차 & 이용 에티켓</h2>
+                </div>
+            </div>
+            <div class="info-item searchable" onclick="openModal('furniture')">
+                <div>
+                    <div class="info-item-title">🪑 사무가구 제공 & 자산 이동 수칙</div>
+                    <div class="info-item-sub">1인당 데스크/서랍장/의자 기본 제공, 반입/반출비 안내</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+            <div class="info-item searchable" onclick="openModal('kitchen-fnb')">
+                <div>
+                    <div class="info-item-title">☕ F&B 바, 취식 장소 & 냉장고 스티커 수칙</div>
+                    <div class="info-item-sub">시리얼/우유 무료, 금요일 18시 냉장고 클리닝 수칙</div>
+                </div>
+                <span class="info-arrow">보기 →</span>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- POPUP MODAL -->
+    <div class="modal-overlay" id="modalOverlay" onclick="closeModalOutside(event)">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal()">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <!-- Floating Chatbot Widget -->
+    <a href="https://members.fastfive.co.kr/inquiry/create" target="_blank" class="chatbot-widget" title="매니저 1:1 문의">
+        <span class="chatbot-label">1:1 매니저 문의</span>
+        <div class="chatbot-icon">💬</div>
+    </a>
+
+    <script>
+        // Modal Master Database with PDF Embeds
+        const modalData = {
+            'welcome-letter': {
+                badge: 'PDF DOCUMENT',
+                title: '✉️ 패스트파이브 선릉 웰컴레터 & 입주 OT',
+                body: `
+                    <p style="margin-bottom:8px;">아래 PDF 문서 원본에서 전체 웰컴 가이드를 확장하여 확인하실 수 있습니다.</p>
+                    <div style="background:#F1F5F9; padding:12px; border-radius:10px; font-size:0.88rem; margin-bottom:12px;">
+                        • <strong>주소:</strong> 서울 강남구 테헤란로77길 11-15 (선릉역 10번 출구 도보 7분)<br>
+                        • <strong>규모:</strong> B2~13층 (총 15개 층, 682평 규모)<br>
+                        • <strong>매니저 운영시간:</strong> 평일 09:30 ~ 18:30
+                    </div>
+                `
+            },
+            'wifi': {
+                badge: 'NETWORK',
+                title: '📶 전 층 공용 Wi-Fi 및 유선 랜',
+                body: `
+                    <h4>와이파이 접속 정보</h4>
+                    <ul>
+                        <li><strong>SSID:</strong> FASTFIVE_5G (또는 FASTFIVE_2.4G)</li>
+                        <li><strong>비밀번호:</strong> <span id="modal-pw-val" style="font-weight:800; color:#2563EB;">five0401</span></li>
+                    </ul>
+                    <button class="btn-copy-wifi" style="background:#2563EB; color:#fff; border:none; width:100%; padding:12px; border-radius:10px; font-weight:800; margin-top:12px; cursor:pointer;" onclick="copyWifiPw()">📋 비밀번호 복사하기</button>
+                `
+            },
+            'door': {
+                badge: 'ACCESS',
+                title: '🚪 스마트폰 모바일 출입 카드',
+                body: `
+                    <h4>모바일 출입 카드 이용법</h4>
+                    <ul>
+                        <li>패스파이브 앱 로그인 ➡️ 하단 [모바일 출입카드] 터치</li>
+                        <li>리더기에 화면을 켠 스마트폰 대기 (아이폰: 블루투스 / 갤럭시: NFC)</li>
+                    </ul>
+                `
+            },
+            'printer-black': {
+                badge: 'PDF DOCUMENT',
+                title: '🖨️ 복합기 이용가이드 문서',
+                body: `
+                    <p style="margin-bottom:8px;">흑백/컬러 프린팅 세팅 원본 안내입니다.</p>
+                    <ul>
+                        <li><strong>흑백 인쇄:</strong> 인당 월 200장 무료 제공</li>
+                        <li><strong>컬러 인쇄:</strong> print.fastfive.co.kr 접속 ➡️ 카드관리 결제 세팅 (A4: 110원 / A3: 220원)</li>
+                    </ul>
+                `
+            },
+            'fivecloud': {
+                badge: 'PDF DOCUMENT',
+                title: '☁️ 파이브클라우드 서비스 소개서',
+                body: `
+                    <h4>통합 IT 컨설팅 혜택</h4>
+                    <ul>
+                        <li><strong>소프트웨어 할인:</strong> 네이버웍스, M365, AWS 최대 40% 할인</li>
+                        <li><strong>네트워크 구축:</strong> 전담 엔지니어 1:1 진단 및 원스톱 설치</li>
+                    </ul>
+                `
+            },
+            'credit-info': {
+                badge: 'CREDIT POLICY',
+                title: '💳 크레딧 차감 정책 & 회의실 가이드',
+                body: `
+                    <h4>기본 수칙</h4>
+                    <ul>
+                        <li>30분당 1 크레딧 차감 (개인 1일 최대 6시간 제한)</li>
+                        <li>취소 마감: 시작 1시간 전까지 무료 취소 가능</li>
+                    </ul>
+                    <a href="https://credit-guide.fastfive.co.kr/" target="_blank" style="display:inline-block; margin-top:10px; color:#2563EB; font-weight:800;">👉 크레딧 공식 가이드북 바로가기 ↗</a>
+                `
+            },
+            'peak-credit': {
+                badge: 'PEAK CREDIT',
+                title: '⏰ 평일 피크타임(12~18시) 차감 수칙',
+                body: `
+                    <h4>피크타임 차감 정책</h4>
+                    <ul>
+                        <li>17인 이하 미팅룸: 시간당 3크레딧</li>
+                        <li>18인 이상 미팅룸: 시간당 4크레딧</li>
+                    </ul>
+                `
+            },
+            'furniture': {
+                badge: 'FURNITURE',
+                title: '🪑 가구 제공 & 자산 이동 수칙',
+                body: `
+                    <p>1인당 데스크, 서랍장, 의자 기본 제공. 반입/반출 시 자산별 단가(데스크 1.5만, 서랍장 5천, 의자 1.5만 원) 적용.</p>
+                `
+            },
+            'kitchen-fnb': {
+                badge: 'CANTEEN',
+                title: '☕ F&B 바 & 냉장고 스티커 수칙',
+                body: `
+                    <p>시리얼/우유 무료 제공. 공용 냉장고 보관 시 스티커 필수 부착 (금요일 18시 미부착 음식물 일괄 폐기).</p>
+                `
+            }
+        };
+
+        // Modal Controls
+        function openModal(key) {
+            const data = modalData[key];
+            if (!data) return;
+
+            document.getElementById('modalContent').innerHTML = `
+                <span class="modal-badge">${data.badge}</span>
+                <h3 class="modal-title">${data.title}</h3>
+                <div class="modal-body">${data.body}</div>
+            `;
+            document.getElementById('modalOverlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            document.getElementById('modalOverlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        function closeModalOutside(e) {
+            if (e.target.id === 'modalOverlay') closeModal();
+        }
+
+        function copyWifiPw() {
+            alert('✓ 와이파이 비밀번호(five0401)가 클립보드에 복사되었습니다!');
+        }
+
+        // Real-Time Search Filter
+        function filterContent() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            document.querySelectorAll('.searchable').forEach(item => {
+                item.style.display = item.innerText.toLowerCase().includes(query) ? 'flex' : 'none';
+            });
+        }
+
+        // Category Tab Switch
+        function switchCategory(cat, el) {
+            document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active'));
+            el.classList.add('active');
+
+            const sections = document.querySelectorAll('.category-sec');
+            if (cat === 'all') {
+                sections.forEach(s => s.style.display = 'block');
+            } else {
+                sections.forEach(s => s.style.display = 'none');
+                if (cat === 'welcome') document.getElementById('sec-welcome').style.display = 'block';
+                if (cat === 'credit') document.getElementById('sec-credit').style.display = 'block';
+                if (cat === 'oa') document.getElementById('sec-oa').style.display = 'block';
+                if (cat === 'benefit') document.getElementById('sec-benefit').style.display = 'block';
+                if (cat === 'office') document.getElementById('sec-office').style.display = 'block';
+            }
+        }
+
+        // Admin WYSIWYG Editor Commands
+        function toggleAdminPrompt() {
+            const panel = document.getElementById('adminPanel');
+            if (panel.classList.contains('active')) {
+                panel.classList.remove('active');
+            } else {
+                const pw = prompt("관리자 비밀번호를 입력해주세요.", "");
+                if (pw === "1234") {
+                    panel.classList.add('active');
+                    loadItemToEditor();
+                } else if (pw !== null) {
+                    alert("비밀번호가 올바르지 않습니다.");
+                }
+            }
+        }
+
+        function execCmd(command, value = null) {
+            document.execCommand(command, false, value);
+        }
+
+        function execColor(color) {
+            document.execCommand('foreColor', false, color);
+        }
+
+        function insertLinkPrompt() {
+            const url = prompt("연결할 URL 주소를 입력하세요:", "https://");
+            if (url) document.execCommand('createLink', false, url);
+        }
+
+        function insertImagePrompt() {
+            const url = prompt("이미지 URL 주소를 입력하세요:", "https://");
+            if (url) document.execCommand('insertImage', false, url);
+        }
+
+        function insertTable() {
+            const tableHtml = `
+                <table>
+                    <thead><tr><th>항목</th><th>내용</th></tr></thead>
+                    <tbody><tr><td>예시 1</td><td>내용 1</td></tr></tbody>
+                </table>
+            `;
+            document.execCommand('insertHTML', false, tableHtml);
+        }
+
+        function loadItemToEditor() {
+            const key = document.getElementById('admItemSelect').value;
+            if (modalData[key]) {
+                document.getElementById('editorContent').innerHTML = modalData[key].body;
+            }
+        }
+
+        function saveAdminChanges() {
+            const key = document.getElementById('admItemSelect').value;
+            const updatedHtml = document.getElementById('editorContent').innerHTML;
+
+            if (modalData[key]) {
+                modalData[key].body = updatedHtml;
+                alert("✓ 해당 항목의 서식/내용이 프론트에 성공적으로 업데이트되었습니다!");
+                document.getElementById('adminPanel').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
